@@ -1,5 +1,5 @@
 void main() {
-    
+
     var text  = new Scanner("""
             Elza bydlela v domku blízko u silnice. S oblibou si vyskočila na betonovou zídku a pozorovala, co se děje na ulici.
             Elza byla totiž kočka. Nebyla to jen obyčejná kočka, byla mimořádně krásná. Měla hebkou černou srst, velké, krásně zelené oči a pohybovala se ladně jako baletka. Není divu, že se za ní každý otáčel.
@@ -34,7 +34,7 @@ void main() {
         println("--------------------------------------");
         for (var znak : veta.toCharArray()) {
             if (zkouseneZnaky.keySet().contains(znak)) {
-                var vstup = readln("y");
+                var vstup = readln("");
                 if (!vstup.isEmpty() && zkouseneZnaky.get(vstup.charAt(0)).equals(zkouseneZnaky.get(znak))) {
                     spravne++;
                 } else {
