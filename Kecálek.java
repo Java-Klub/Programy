@@ -22,7 +22,7 @@ void main() throws Exception {
                 komunikacniKanal.receive(prijataZprava);
 
                 //a vypisujeme je na obrazovku
-                System.out.println(new String(prijataZprava.getData(), prijataZprava.getOffset(), prijataZprava.getLength()));
+                System.out.println(new String(prijataZprava.getData(), prijataZprava.getOffset(), prijataZprava.getLength(), StandardCharsets.UTF_8));
             } catch (Exception e) {
                 //tady bychom pripadne resily nejake chybove stavy, ale to nas ted nezajima
             }
@@ -39,7 +39,7 @@ void main() throws Exception {
             zprava = jmeno + ": " + zprava;
 
             //a zpravu odesleme komunikcnim kanalem do cele mistni site, kde ostatni poslouchji
-            komunikacniKanal.send(new DatagramPacket(zprava.getBytes(), zprava.getBytes().length, InetAddress.getByName("255.255.255.255"), 1234));
+            komunikacniKanal.send(new DatagramPacket(zprava.getBytes(StandardCharsets.UTF_8), zprava.getBytes().length, InetAddress.getByName("255.255.255.255"), 1234));
         }
     }
 }
