@@ -117,7 +117,7 @@ record GeometrickéKreslení(Graphics grafika) {
 }
 
 void main() {
-    novéOkno("Ahoj", 600, 500, kreslení -> {
+    novéOkno("Můj obrázek", 600, 500, kreslení -> {
         kreslení.vybarviCelouPlochu(Color.CYAN);
         var náhoda = new Random(1);
         for (int y = 100; y < 350; y += 5) { 
