@@ -1,12 +1,13 @@
+// Kecálek je program, kterým si můzeme navzájem psat ve školní poċítačové síti
 void main() throws Exception {
 
-    //nejprve se te zeptame na jmeno, protoze vsichni pouzivame stejny program, ale kazdy se jmenuje jinak
+    // nejprve se te zeptame na jmeno, protoze vsichni pouzivame stejny program, ale kazdy se jmenuje jinak
     var jmeno = readln("jak se jmenujes?");
 
-    //nezapomeneme slusne pozdravit a vypsat napovedu
+    // nezapomeneme slusne pozdravit a vypsat napovedu
     println("ahoj " + jmeno + ", pro ukonceni napis konec");
 
-    //otevrem si sitovy komunikacni kanal
+    // otevrem si sitovy komunikacni kanal
     try (var komunikacniKanal = new DatagramSocket(1234);) {
 
         //prijimani zprav je samostatny proces, ktery potrebuje vlastni vlakno
@@ -21,8 +22,8 @@ void main() throws Exception {
                 //tak prijimame zpravy
                 komunikacniKanal.receive(prijataZprava);
 
-                //a vypisujeme je na obrazovku
-                System.out.println(new String(prijataZprava.getData(), prijataZprava.getOffset(), prijataZprava.getLength(), StandardCharsets.UTF_8));
+                //a vypisujeme je do terminálu
+                System.out.println(new String(prijataZprava.getData(), prijataZprava.getOffset(), prijataZprava.getLength()));
             } catch (Exception e) {
                 //tady bychom pripadne resily nejake chybove stavy, ale to nas ted nezajima
             }
@@ -39,7 +40,7 @@ void main() throws Exception {
             zprava = jmeno + ": " + zprava;
 
             //a zpravu odesleme komunikcnim kanalem do cele mistni site, kde ostatni poslouchji
-            komunikacniKanal.send(new DatagramPacket(zprava.getBytes(StandardCharsets.UTF_8), zprava.getBytes().length, InetAddress.getByName("255.255.255.255"), 1234));
+            komunikacniKanal.send(new DatagramPacket(zprava.getBytes(), zprava.getBytes().length, InetAddress.getByName("255.255.255.255"), 1234));
         }
     }
 }

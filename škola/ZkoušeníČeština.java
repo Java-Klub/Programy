@@ -35,7 +35,7 @@ void main() {
         for (var znak : veta.toCharArray()) {
             if (zkouseneZnaky.keySet().contains(znak)) {
                 var vstup = readln("");
-                if (!vstup.isEmpty() && zkouseneZnaky.get(vstup.charAt(0)).equals(zkouseneZnaky.get(znak))) {
+                if (!vstup.isEmpty() && zkouseneZnaky.getOrDefault(vstup.charAt(0), vstup.charAt(0)).equals(zkouseneZnaky.get(znak))) {
                     spravne++;
                 } else {
                     chyby++;
