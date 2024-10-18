@@ -20,12 +20,12 @@ void main()  {
             barevnaPaleta[3 * x + i] = (byte)(255 * Math.sin(slozkyJedneBarvy[i]));
         }
     }
-    var barevnýModel = new IndexColorModel(8, maxBarev, barevnaPaleta, 0, false);
+    var barevnyModel = new IndexColorModel(8, maxBarev, barevnaPaleta, 0, false);
     var okno = new JFrame("Mandelbrotova Množina") {
         public void paint(Graphics grafika) {
             var rozmeryOkna = grafika.getClipBounds();
             if (obrazek == null || obrazek.getWidth() != rozmeryOkna.width || obrazek.getHeight() != rozmeryOkna.height) {
-                obrazek = new BufferedImage(rozmeryOkna.width, rozmeryOkna.height, BufferedImage.TYPE_BYTE_INDEXED, barevnýModel);
+                obrazek = new BufferedImage(rozmeryOkna.width, rozmeryOkna.height, BufferedImage.TYPE_BYTE_INDEXED, barevnyModel);
             }
             var raster = obrazek.getRaster();
             var x0 = zStredu - velikostMnoziny/2;
