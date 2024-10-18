@@ -33,7 +33,7 @@ void vykresliVeze() {
         for (var vez : veze) {
             if (patro < vez.size()) {
                 var velikostKamene = vez.get(patro);
-                print(" ".repeat(pocetPater - velikostKamene) + "\033[46m" + "\u25d8".repeat(2 * velikostKamene - 1) + "\033[0m" + " ".repeat(pocetPater - velikostKamene));
+                print(" ".repeat(pocetPater - velikostKamene) + "\033[46m" + "=".repeat(2 * velikostKamene - 1) + "\033[0m" + " ".repeat(pocetPater - velikostKamene));
             } else {
                 print(" ".repeat(2 * pocetPater - 1));
             }

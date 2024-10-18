@@ -24,35 +24,31 @@ class Generace extends BitSet {
     }
 }
 
-String smajlik(int kód) {
-    return new String(new int[]{kód, ' '}, 0, 2);
-}
-
 void main() throws InterruptedException {
-    var smajlikNovyZivot = smajlik(0x1F970);
-    var smajlikZivot = smajlik(0x1F600);
-    var smajlikSmrt = smajlik(0x1F922);
-    var smajlikNic = smajlik(0x1FAE5);
+    var novyZivot = "o ";
+    var zivot = "O ";
+    var smrt = "X ";
+    var nic = ". ";
 
     var pocatecniStav =
     """
-    XX
-    XX   XX
-        X  X
-         XX      X
-                  X
-    XX          XXX
-    X   X
-    X  XXX
-        X      X X
-               X X
-               X X
-            XXX   XXX
+    OO
+    OO   OO
+        O  O
+         OO      O
+                  O
+    OO          OOO
+    O   O
+    O  OOO
+        O      O O
+               O O
+               O O
+            OOO   OOO
 
-            XXX   XXX
-               X X
-               X X
-               X X
+            OOO   OOO
+               O O
+               O O
+               O O
     """.split(System.lineSeparator());
 
     var staraGenerace = new Generace();
@@ -74,21 +70,21 @@ void main() throws InterruptedException {
                     if (pocetSousedu < 2 || pocetSousedu > 3) {
                         //málo nebo naopak moc sousedů zahubí stávající život
                         novaGenerace.nastavHodnotu(x, y, false);
-                        print(smajlikSmrt);
+                        print(smrt);
                     } else {
                         //při optimálním počtu sousedů se přežívá do další generace
                         novaGenerace.nastavHodnotu(x, y, true);
-                        print(smajlikZivot);
+                        print(zivot);
                     }
                 } else {
                     if (pocetSousedu == 3) {
                         //ideální prázdné místo pro zrození nového života
                         novaGenerace.nastavHodnotu(x, y, true);
-                        print(smajlikNovyZivot);
+                        print(novyZivot);
                     } else {
                         //nic tu nebylo a ani v další generaci nebude
                         novaGenerace.nastavHodnotu(x, y, false);
-                        print(smajlikNic);
+                        print(nic);
                     }
                 }
             }

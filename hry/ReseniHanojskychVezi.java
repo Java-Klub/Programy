@@ -29,7 +29,7 @@ void vykresliVeze() {
         for (var vez : veze) {
             if (patro < vez.size()) {
                 var velikostKamene = vez.get(patro);
-                sb.append(" ".repeat(pocetPater - velikostKamene)).append("\033[46m").append("\u25d8".repeat(2 * velikostKamene - 1)).append("\033[0m").append(" ".repeat(pocetPater - velikostKamene));
+                sb.append(" ".repeat(pocetPater - velikostKamene)).append("\033[46m").append("=".repeat(2 * velikostKamene - 1)).append("\033[0m").append(" ".repeat(pocetPater - velikostKamene));
             } else {
                 sb.append(" ".repeat(2 * pocetPater - 1));
             }
