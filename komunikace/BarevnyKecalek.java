@@ -23,6 +23,7 @@ void main() throws Exception {
         for (var zprava = "jsem tady"; !zprava.equalsIgnoreCase("konec"); zprava = readln("")) {
             var dataZpravy = (barevnyKod + jmeno + ": " + zprava).getBytes();
             komunikacniKanal.send(new DatagramPacket(dataZpravy, dataZpravy.length, adresa));
+            Thread.sleep(5000);
         }
     }
 }
