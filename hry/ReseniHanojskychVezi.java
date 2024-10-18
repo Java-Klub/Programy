@@ -1,9 +1,9 @@
 int pocetPater;
 List<LinkedList<Integer>> veze;
 
-int prectiCislo(String výzva, int max) {
+int prectiCislo(String vyzva, int max) {
     while (true) try {
-        var cislo = Integer.parseInt(readln(výzva));
+        var cislo = Integer.parseInt(readln(vyzva));
         if (cislo < 1 || cislo > max) {
             println("Chybné zadání!");
         } else {
