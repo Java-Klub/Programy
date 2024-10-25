@@ -54,19 +54,17 @@ void main() throws Exception {
         drony[i] = ImageIO.read(getClass().getResource("dron" + i + ".png"));
     }
 
+    var vsechnyDrony = new HashMap<SocketAddress, Dron>();
+    var grafika = (Graphics2D)hra.getGraphics();
+
     try (var komunikacniKanal = new DatagramSocket(1234);) {
         Thread.ofVirtual().start(() -> {
 
             var prijataZprava = new DatagramPacket(new byte[49], 49);
-            var vsechnyDrony = new HashMap<SocketAddress, Dron>();
-            var grafika = (Graphics2D)hra.getGraphics();
             while (!komunikacniKanal.isClosed()) {
                 try {
                     komunikacniKanal.receive(prijataZprava);
                     vsechnyDrony.put(prijataZprava.getSocketAddress(), new Dron(prijataZprava));
-                    grafika.drawRenderedImage(mapa, null);
-                    vsechnyDrony.values().stream().sorted().forEachOrdered(dron ->
-                        grafika.drawRenderedImage(drony[dron.typ], dron.pozice));
                 } catch (Exception e) {}
             }
         });
@@ -95,7 +93,11 @@ void main() throws Exception {
             mujDron.zabalDoZpravy(odchoziZprava);
             komunikacniKanal.send(odchoziZprava);
 
-            Thread.sleep(10);
+            grafika.drawRenderedImage(mapa, null);
+            vsechnyDrony.values().stream().sorted().forEachOrdered(dron ->
+                grafika.drawRenderedImage(drony[dron.typ], dron.pozice));
+
+            Thread.sleep(20);
         }
     }
 }
