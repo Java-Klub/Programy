@@ -85,7 +85,7 @@ void main() throws Exception {
             if (klavesy.get(KeyEvent.VK_LEFT)) mujDron.pozice.rotate(-0.02, 75, 75);
             if (klavesy.get(KeyEvent.VK_RIGHT)) mujDron.pozice.rotate(0.02, 75, 75);
             if (klavesy.get(KeyEvent.VK_A)) mujDron.pozice.scale(1.01, 1.01);
-            if (klavesy.get(KeyEvent.VK_Z)) mujDron.pozice.scale(0.99, 0.99);
+            if (klavesy.get(KeyEvent.VK_Y)) mujDron.pozice.scale(0.99, 0.99);
             if (klavesy.get(KeyEvent.VK_1)) mujDron.typ = 1;
             if (klavesy.get(KeyEvent.VK_2)) mujDron.typ = 2;
             if (klavesy.get(KeyEvent.VK_3)) mujDron.typ = 3;

@@ -36,7 +36,7 @@ void main() throws Exception {
         if (klavesy.get(KeyEvent.VK_LEFT)) poziceDronu.rotate(-0.02, 75, 75);
         if (klavesy.get(KeyEvent.VK_RIGHT)) poziceDronu.rotate(0.02, 75, 75);
         if (klavesy.get(KeyEvent.VK_A)) poziceDronu.scale(1.01, 1.01);
-        if (klavesy.get(KeyEvent.VK_Z)) poziceDronu.scale(0.99, 0.99);
+        if (klavesy.get(KeyEvent.VK_Y)) poziceDronu.scale(0.99, 0.99);
         if (klavesy.get(KeyEvent.VK_1)) typDronu = 1;
         if (klavesy.get(KeyEvent.VK_2)) typDronu = 2;
         if (klavesy.get(KeyEvent.VK_3)) typDronu = 3;
