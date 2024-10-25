@@ -55,7 +55,6 @@ void main() throws Exception {
     }
 
     var vsechnyDrony = new HashMap<SocketAddress, Dron>();
-    var grafika = (Graphics2D)hra.getGraphics();
 
     try (var komunikacniKanal = new DatagramSocket(1234);) {
         Thread.ofVirtual().start(() -> {
@@ -77,6 +76,8 @@ void main() throws Exception {
 
         var odchoziZprava = new DatagramPacket(new byte[49], 49, InetAddress.getByName("255.255.255.255"), 1234);
 
+        hra.createBufferStrategy(2);
+
         while(hra.isVisible()) {
             if (klavesy.get(KeyEvent.VK_UP)) mujDron.pozice.translate(0, -1);
             if (klavesy.get(KeyEvent.VK_DOWN)) mujDron.pozice.translate(0, 1);
@@ -93,11 +94,16 @@ void main() throws Exception {
             mujDron.zabalDoZpravy(odchoziZprava);
             komunikacniKanal.send(odchoziZprava);
 
+            var buffer = hra.getBufferStrategy();
+            var grafika = (Graphics2D)buffer.getDrawGraphics();
+
             grafika.drawRenderedImage(mapa, null);
             vsechnyDrony.values().stream().sorted().forEachOrdered(dron ->
                 grafika.drawRenderedImage(drony[dron.typ], dron.pozice));
 
-            Thread.sleep(20);
+            buffer.show();
+
+            Thread.sleep(10);
         }
     }
 }
