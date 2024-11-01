@@ -56,7 +56,7 @@ void main() throws Exception {
 
     var vsechnyDrony = new HashMap<SocketAddress, Dron>();
 
-    try (var komunikacniKanal = new DatagramSocket(1234);) {
+    try (var komunikacniKanal = new DatagramSocket(1235);) {
         Thread.ofVirtual().start(() -> {
 
             var prijataZprava = new DatagramPacket(new byte[49], 49);
@@ -74,7 +74,7 @@ void main() throws Exception {
         mujDron.pozice = AffineTransform.getTranslateInstance(700, 580);
         mujDron.pozice.scale(0.5, 0.5);
 
-        var odchoziZprava = new DatagramPacket(new byte[49], 49, InetAddress.getByName("255.255.255.255"), 1234);
+        var odchoziZprava = new DatagramPacket(new byte[49], 49, InetAddress.getByName("255.255.255.255"), 1235);
 
         hra.createBufferStrategy(2);
 
