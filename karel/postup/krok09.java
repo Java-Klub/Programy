@@ -22,7 +22,7 @@ String[] hriste = """
 #                                             #
 #                                             #
 ###############################################
-""".split(System.lineSeparator());
+""".split("\n");
 
 char znackaKarla = '>';
 int domaciPoziceX = 1;

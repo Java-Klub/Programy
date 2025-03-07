@@ -22,7 +22,7 @@ String[] hriste = """
 #                                             #
 #                                             #
 ###############################################
-""".split(System.lineSeparator());
+""".split("\n");
 
 void nakresliHriste() {
     for (int y = 0; y < hriste.length; y++) {
