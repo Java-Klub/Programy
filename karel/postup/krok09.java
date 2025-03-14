@@ -29,7 +29,8 @@ int domaciPoziceX = 1;
 int domaciPoziceY = 20;
 int poziceKarlaX = domaciPoziceX;
 int poziceKarlaY = domaciPoziceY;
-int pauza = 200;
+int pauza = 100;
+boolean rychle = false;
 
 void chvilkuPockej() {
     try {
@@ -39,19 +40,21 @@ void chvilkuPockej() {
 }
 
 void nakresliHriste() {
-    for (int y = 0; y < hriste.length; y++) {
-        String radek = hriste[y];
-        for (int x = 0; x < radek.length(); x++) {
-            if (x == poziceKarlaX && y == poziceKarlaY) {
-                IO.print(znackaKarla);
-            } else {
-                IO.print(radek.charAt(x));
+    if (!rychle) {
+        for (int y = 0; y < hriste.length; y++) {
+            String radek = hriste[y];
+            for (int x = 0; x < radek.length(); x++) {
+                if (x == poziceKarlaX && y == poziceKarlaY) {
+                    IO.print(znackaKarla);
+                } else {
+                    IO.print(radek.charAt(x));
+                }
             }
+            IO.println("");
         }
         IO.println("");
+        chvilkuPockej();
     }
-    IO.println("");
-    chvilkuPockej();
 }
 
 boolean sever() {
@@ -127,11 +130,11 @@ void vpravoVbok() {
 }
 
 void rychle() {
-    pauza = 0;
+    rychle = true;
 }
 
 void pomalu() {
-    pauza = 200;
+    rychle = false;
 }
 
 boolean doma() {
