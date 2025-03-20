@@ -69,17 +69,19 @@ void odesliZpravu() {
         String jmeno = System.getProperty("user.name");
         dataZpravy.putInt(jmeno.length());
         dataZpravy.put(jmeno.getBytes());
-        dataZpravy.putInt(hriste.length);
-        for (String radek : hriste) {
-            dataZpravy.putInt(radek.length());
-            dataZpravy.put(radek.getBytes());
-        }
-        InetSocketAddress adresa = new InetSocketAddress("255.255.255.255", 1236);
-        DatagramPacket zprava = new DatagramPacket(dataZpravy.array(), dataZpravy.position(), adresa);
         if (komunikacniKanal == null) {
             komunikacniKanal = new DatagramSocket();
             komunikacniKanal.setBroadcast(true);
+            dataZpravy.putInt(hriste.length);
+            for (String radek : hriste) {
+                dataZpravy.putInt(radek.length());
+                dataZpravy.put(radek.getBytes());
+            }
+        } else {
+            dataZpravy.putInt(0);
         }
+        InetSocketAddress adresa = new InetSocketAddress("255.255.255.255", 1236);
+        DatagramPacket zprava = new DatagramPacket(dataZpravy.array(), dataZpravy.position(), adresa);
         komunikacniKanal.send(zprava);
     } catch (IOException e) {
         throw new UncheckedIOException(e);
