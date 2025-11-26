@@ -44,12 +44,12 @@ void zahraj(String melodie) throws Exception {
             //hrajeme pouze povolene noty, ostatni jsou pauzy
             kanal.noteOn(midiKod, 100);
         }
-        print(noty.group() + " ");
+        IO.print(noty.group() + " ");
         // 1/8 notu hrajeme po dobu 200ms
         Thread.sleep(delka * 200);
         kanal.allNotesOff();
     }
-    println("");
+    IO.println("");
 }
 
 void main() throws Exception {

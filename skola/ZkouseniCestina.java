@@ -28,25 +28,25 @@ void main() {
     while (text.hasNext()) {
         var veta = text.next();
         for (var znak : veta.toCharArray()) {
-            print((zkouseneZnaky.keySet().contains(znak) ? '_' : znak));
+            IO.print((zkouseneZnaky.keySet().contains(znak) ? '_' : znak));
         }
-        println(".");
-        println("--------------------------------------");
+        IO.println(".");
+        IO.println("--------------------------------------");
         for (var znak : veta.toCharArray()) {
             if (zkouseneZnaky.keySet().contains(znak)) {
-                var vstup = readln("");
+                var vstup = IO.readln("");
                 if (!vstup.isEmpty() && zkouseneZnaky.getOrDefault(vstup.charAt(0), vstup.charAt(0)).equals(zkouseneZnaky.get(znak))) {
                     spravne++;
                 } else {
                     chyby++;
-                    print("!" + znak + "!");
+                    IO.print("!" + znak + "!");
                 }
             } else {
-                print(znak);
+                IO.print(znak);
             }
         }
-        println(".");
-        println("--------------------------------------");
+        IO.println(".");
+        IO.println("--------------------------------------");
     }
-    println("počet správných odpovědí: " + spravne + ", počet chyb: " + chyby);
+    IO.println("počet správných odpovědí: " + spravne + ", počet chyb: " + chyby);
 }

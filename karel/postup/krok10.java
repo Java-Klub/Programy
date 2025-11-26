@@ -41,18 +41,19 @@ void chvilkuPockej() {
 
 void nakresliHriste() {
     if (!rychle) {
+        System.out.print("\033[23A");
         for (int y = 0; y < hriste.length; y++) {
             String radek = hriste[y];
             for (int x = 0; x < radek.length(); x++) {
                 if (x == poziceKarlaX && y == poziceKarlaY) {
-                    IO.print(znackaKarla);
+                    System.out.print(znackaKarla);
                 } else {
-                    IO.print(radek.charAt(x));
+                    System.out.print(radek.charAt(x));
                 }
             }
-            IO.println("");
+            System.out.println();
         }
-        IO.println("");
+        System.out.println();
         chvilkuPockej();
     }
 }

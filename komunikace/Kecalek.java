@@ -2,10 +2,10 @@
 void main() throws Exception {
 
     // nejprve se te zeptame na jmeno, protoze vsichni pouzivame stejny program, ale kazdy se jmenuje jinak
-    var jmeno = readln("jak se jmenujes?");
+    var jmeno = IO.readln("jak se jmenujes?");
 
     // nezapomeneme slusne pozdravit a vypsat napovedu
-    println("ahoj " + jmeno + ", pro ukonceni napis konec");
+    IO.println("ahoj " + jmeno + ", pro ukonceni napis konec");
 
     // otevrem si sitovy komunikacni kanal
     try (var komunikacniKanal = new DatagramSocket(1234);) {
@@ -34,7 +34,7 @@ void main() throws Exception {
 
         //jako prvni zprava je odeslano oznameni kdo se pripojil do diskuse
         //a v tomto cyklu se pokracuje dokud nenapiseme konec
-        for (var zprava = "jsem tady"; !zprava.equals("konec"); zprava = readln("")) {
+        for (var zprava = "jsem tady"; !zprava.equals("konec"); zprava = IO.readln("")) {
 
             //na zacatek kazde odesilane zpravy jeste prilepime jmeno odesilatele
             zprava = jmeno + ": " + zprava;

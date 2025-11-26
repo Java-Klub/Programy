@@ -1,25 +1,25 @@
 void main() {
 
-    var pocet = Integer.parseInt(readln("Z kolika příkladů chceš vyzkoušet?"));
+    var pocet = Integer.parseInt(IO.readln("Z kolika příkladů chceš vyzkoušet?"));
     var spravne = 0;
     var spatne = 0;
     var nahoda = new Random();
 
     for (var i = 1; i <= pocet; i++) {
-        println(i + ". příklad:");
+        IO.println(i + ". příklad:");
         var a = nahoda.nextInt(2, 10);
         var b = nahoda.nextInt(2, 10);
-        var vysledek = Integer.parseInt(readln(a + " * " + b + " = "));
+        var vysledek = Integer.parseInt(IO.readln(a + " * " + b + " = "));
         if (vysledek == a * b) {
             spravne++;
-            println("Správně!");
+            IO.println("Správně!");
         } else {
             spatne++;
-            println("Špatně, " + a + " * " + b + " = " + a * b);
+            IO.println("Špatně, " + a + " * " + b + " = " + a * b);
         }
     }
 
-    println("Správných výsledků: " + spravne);
-    println("Špatných výsledků: " + spatne);
-    println("Výsledná známka: " + (1 + 4 * spatne / pocet));
+    IO.println("Správných výsledků: " + spravne);
+    IO.println("Špatných výsledků: " + spatne);
+    IO.println("Výsledná známka: " + (1 + 4 * spatne / pocet));
 }

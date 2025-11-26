@@ -6,7 +6,7 @@ int bububu(int a, int b) {
 }
 
 void mojeMetodaNaVypis(int cislo) {
-    println(cislo);
+    IO.println(cislo);
 }
 
 void main() {

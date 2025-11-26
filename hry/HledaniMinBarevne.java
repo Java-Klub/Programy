@@ -3,12 +3,12 @@ Object[] obarvi(Character[] pole) {
     var obarvenePole = new String[pole.length];
     for (int i = 0; i < pole.length; i++) {
         obarvenePole[i] = switch (pole[i]) {
-            case '1' -> "\033[32m1\033[0m"; 
-            case '2' -> "\033[36m2\033[0m"; 
-            case '3' -> "\033[35m3\033[0m"; 
-            case '4', '5', '6', '7', '8' -> "\033[31m" + pole[i] + "\033[0m"; 
-            case '?' -> "\033[37m?\033[0m"; 
-            default -> "" + pole[i];    
+            case '1' -> "\033[32m1\033[0m";
+            case '2' -> "\033[36m2\033[0m";
+            case '3' -> "\033[35m3\033[0m";
+            case '4', '5', '6', '7', '8' -> "\033[31m" + pole[i] + "\033[0m";
+            case '?' -> "\033[37m?\033[0m";
+            default -> "" + pole[i];
         };
     }
     return obarvenePole;
@@ -66,10 +66,10 @@ void main() {
 
     //tady začíná hlavní herní cyklus
     while (true) {
-        println("zbyvající počet životů: " + pocetZivotu);
+        IO.println("zbyvající počet životů: " + pocetZivotu);
 
         //vykreslíme minové pole
-        println("""
+        IO.println("""
              A   B   C   D   E   F
            +---+---+---+---+---+---+
          1 | %s | %s | %s | %s | %s | %s |  1
@@ -89,16 +89,16 @@ void main() {
 
         //zkontrolujeme, jestli už není vše hotovo
         if (zbyvaOdkryt == 0) {
-            println("konec hry, vše je odkryto");
+            IO.println("konec hry, vše je odkryto");
             return;
         }
         if (pocetZivotu == 0) {
-            println("konec hry, došli ti životy");
+            IO.println("konec hry, došli ti životy");
             return;
         }
 
         //zeptáme se hráče na souřadnice
-        println("zadej souřadnice kam si stoupneš (písmeno a číslo):");
+        IO.println("zadej souřadnice kam si stoupneš (písmeno a číslo):");
         try {
             var souradnice = klavesnice.next("[A-Fa-f][1-6]");
             var i = souradnice.toUpperCase().charAt(0) - 'A' + velikost * (souradnice.charAt(1) - '1');
@@ -106,7 +106,7 @@ void main() {
             if (herniPole[i] == '?' || herniPole[i] == '*') {
                 herniPole[i] = minovePole[i];
                 if (minovePole[i] == '*') {
-                    println("boooom! tady byla mina");
+                    IO.println("boooom! tady byla mina");
                     pocetZivotu--;
                     if (pocetZivotu == 0) {
                         //konec hry, zobrazíme miny
@@ -121,7 +121,7 @@ void main() {
                 }
             }
         } catch (Exception e) {
-            println("špatně zadané souřadnice, zkus to znovu");
+            IO.println("špatně zadané souřadnice, zkus to znovu");
             klavesnice.nextLine();
         }
     }

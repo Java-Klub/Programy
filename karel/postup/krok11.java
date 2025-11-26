@@ -29,7 +29,7 @@ int domaciPoziceX = 1;
 int domaciPoziceY = 20;
 int poziceKarlaX = domaciPoziceX;
 int poziceKarlaY = domaciPoziceY;
-int pauza = 100;
+int pauza = 50;
 boolean rychle = false;
 
 void chvilkuPockej() {
@@ -53,6 +53,12 @@ void nakresliHriste() {
             IO.println("");
         }
         IO.println("");
+        odesliZpravu();
+        chvilkuPockej();
+        odesliZpravu();
+        chvilkuPockej();
+        odesliZpravu();
+        chvilkuPockej();
         odesliZpravu();
         chvilkuPockej();
     }
@@ -185,6 +191,7 @@ void obejdiHriste() {
 }
 
 void main() throws Exception {
+Thread.sleep(10000);
     nakresliHriste();
     obejdiHriste();
 }

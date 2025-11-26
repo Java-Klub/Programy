@@ -4,8 +4,18 @@
 // a spocitany vysledek vrati jako navratovou hodnotu
 // jmeno metody si muzes zvolit
 
+int mocnina(int a) {
+    return a * a;
+}
+
 // dale napis hlavni program, ktery zavola tuto methodu postupne s cisly 1 az 10
 // a hodnotu vracenou z volani methody vzdy vypise na obrazovku
+
+void main() {
+    for (int i = 1; i <= 10; i++) {
+        IO.println(mocnina(i));
+    }
+}
 
 // pro inspiraci se muzes libovolne divat do ostatnich programu
 

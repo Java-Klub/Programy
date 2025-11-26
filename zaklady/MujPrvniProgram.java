@@ -2,11 +2,16 @@
 // main je jméno hlavní metody každého programu a tou budeme většinou začínat
 void main() {
 
-    // println je příkaz pro výpis řádku textu do terminálu
-    println("Ahoj, já jsem tvůj první program v Javě a umím vypsat čísla od 1 do 10:");
+    // IO.println je příkaz pro výpis řádku textu do terminálu
+    IO.println("Ahoj, já jsem tvůj první program v Javě a umím vypsat čísla od 1 do 10:");
+    int a;
+    long b;
+    boolean c;
+    double d = 1.5678;
 
-    // for je příkaz pro opakované provádění dalších příkazů
-    for (var i = 1; i <= 10; i = i + 1) {
-        println(i);
-    }
+    a = 3;
+    b = 2;
+
+    b = a * (a + b);
+    IO.println(b);
 }

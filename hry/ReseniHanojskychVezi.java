@@ -3,14 +3,14 @@ List<LinkedList<Integer>> veze;
 
 int prectiCislo(String vyzva, int max) {
     while (true) try {
-        var cislo = Integer.parseInt(readln(vyzva));
+        var cislo = Integer.parseInt(IO.readln(vyzva));
         if (cislo < 1 || cislo > max) {
-            println("Chybné zadání!");
+            IO.println("Chybné zadání!");
         } else {
             return cislo;
         }
     } catch (NumberFormatException chyba) {
-        println("Chybné zadání!");
+        IO.println("Chybné zadání!");
     }
 }
 
@@ -37,7 +37,7 @@ void vykresliVeze() {
         sb.append('\n');
     }
     sb.append(" ".repeat(pocetPater - 1)).append(1).append(" ".repeat(2 * pocetPater - 2)).append(2).append(" ".repeat(2 * pocetPater - 2)).append(3);
-    println(sb.toString());
+    IO.println(sb.toString());
 }
 
 void presun(int pocetKamenu, LinkedList<Integer> zVeze, LinkedList<Integer> naVez, LinkedList<Integer> odkladiste) {

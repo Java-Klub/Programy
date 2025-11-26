@@ -50,10 +50,10 @@ void main() {
 
     //tady začíná hlavní herní cyklus
     while (true) {
-        println("zbyvající počet životů: " + pocetZivotu);
+        IO.println("zbyvající počet životů: " + pocetZivotu);
 
         //vykreslíme minové pole
-        print("""
+        IO.print("""
              A   B   C   D   E   F
            +---+---+---+---+---+---+
          1 | %c | %c | %c | %c | %c | %c |  1
@@ -73,16 +73,16 @@ void main() {
 
         //zkontrolujeme, jestli už není vše hotovo
         if (zbyvaOdkryt == 0) {
-            println("konec hry, vše je odkryto");
+            IO.println("konec hry, vše je odkryto");
             return;
         }
         if (pocetZivotu == 0) {
-            println("konec hry, došli ti životy");
+            IO.println("konec hry, došli ti životy");
             return;
         }
 
         //zeptáme se hráče na souřadnice
-        println("zadej souřadnice kam si stoupneš (písmeno a číslo):");
+        IO.println("zadej souřadnice kam si stoupneš (písmeno a číslo):");
         try {
             var souradnice = klavesnice.next("[A-Fa-f][1-6]");
             var i = souradnice.toUpperCase().charAt(0) - 'A' + velikost * (souradnice.charAt(1) - '1');
@@ -90,7 +90,7 @@ void main() {
             if (herniPole[i] == '?' || herniPole[i] == '*') {
                 herniPole[i] = minovePole[i];
                 if (minovePole[i] == '*') {
-                    println("boooom! tady byla mina");
+                    IO.println("boooom! tady byla mina");
                     pocetZivotu--;
                     if (pocetZivotu == 0) {
                         //konec hry, zobrazíme miny
@@ -105,7 +105,7 @@ void main() {
                 }
             }
         } catch (Exception e) {
-            println("špatně zadané souřadnice, zkus to znovu");
+            IO.println("špatně zadané souřadnice, zkus to znovu");
             klavesnice.nextLine();
         }
     }

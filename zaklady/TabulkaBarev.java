@@ -1,7 +1,7 @@
 void main() {
 
     // tady používáme textový blok přes více řádků, ten začíná a konċí """
-    println("""
+    IO.println("""
         Text v terminálu můžeme obarvit pomocí barevných kódů.
 
         Každŷ kód:
@@ -26,10 +26,10 @@ void main() {
             // \33 je specielní znak a pokud ho chci použít (obarvit text), tak ho napíšu s jedním zpětným lomítkem,
             // ale pokud ho chci jenom vypsat jak vypadá, musím zpětné lomítko zdvojit a napsat \\33
             // další použitý specielní znak je \t neboli tabulátor, který nám pomůže text zarovnat do sloupců
-            print("\33" + barevnyKod + "\\33" + barevnyKod+ "\t");
+            IO.print("\33" + barevnyKod + "\\33" + barevnyKod+ "\t");
         }
 
         // každá barva pozadí bude vypsaná na nový řádek
-        println("");
+        IO.println("");
     }
 }

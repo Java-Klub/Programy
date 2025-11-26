@@ -61,7 +61,7 @@ void main() throws InterruptedException {
 
     var cisloGenerace = 1;
     while(true) {
-        println("Generace " + cisloGenerace++);
+        IO.println("Generace " + cisloGenerace++);
         var novaGenerace = new Generace();
         for (var y = 0; y < sirkaHerniPlochy; y++) {
             for (var x = 0; x < vyskaHerniPlochy; x++) {
@@ -70,28 +70,28 @@ void main() throws InterruptedException {
                     if (pocetSousedu < 2 || pocetSousedu > 3) {
                         //málo nebo naopak moc sousedů zahubí stávající život
                         novaGenerace.nastavHodnotu(x, y, false);
-                        print(smrt);
+                        IO.print(smrt);
                     } else {
                         //při optimálním počtu sousedů se přežívá do další generace
                         novaGenerace.nastavHodnotu(x, y, true);
-                        print(zivot);
+                        IO.print(zivot);
                     }
                 } else {
                     if (pocetSousedu == 3) {
                         //ideální prázdné místo pro zrození nového života
                         novaGenerace.nastavHodnotu(x, y, true);
-                        print(novyZivot);
+                        IO.print(novyZivot);
                     } else {
                         //nic tu nebylo a ani v další generaci nebude
                         novaGenerace.nastavHodnotu(x, y, false);
-                        print(nic);
+                        IO.print(nic);
                     }
                 }
             }
-            println("");
+            IO.println("");
         }
         if (staraGenerace.equals(novaGenerace)) {
-            println("Konec - žádná další změna.");
+            IO.println("Konec - žádná další změna.");
             return;
         }
         staraGenerace = novaGenerace;

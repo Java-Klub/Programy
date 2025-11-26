@@ -4,14 +4,14 @@ List<LinkedList<Integer>> veze;
 
 int prectiCislo(String vyzva, int max) {
     while (true) try {
-        var cislo = Integer.parseInt(readln(vyzva));
+        var cislo = Integer.parseInt(IO.readln(vyzva));
         if (cislo < 1 || cislo > max) {
-            println("Chybné zadání!");
+            IO.println("Chybné zadání!");
         } else {
             return cislo;
         }
     } catch (NumberFormatException chyba) {
-        println("Chybné zadání!");
+        IO.println("Chybné zadání!");
     }
 }
 
@@ -33,14 +33,14 @@ void vykresliVeze() {
         for (var vez : veze) {
             if (patro < vez.size()) {
                 var velikostKamene = vez.get(patro);
-                print(" ".repeat(pocetPater - velikostKamene) + "\033[46m" + "=".repeat(2 * velikostKamene - 1) + "\033[0m" + " ".repeat(pocetPater - velikostKamene));
+                IO.print(" ".repeat(pocetPater - velikostKamene) + "\033[46m" + "=".repeat(2 * velikostKamene - 1) + "\033[0m" + " ".repeat(pocetPater - velikostKamene));
             } else {
-                print(" ".repeat(2 * pocetPater - 1));
+                IO.print(" ".repeat(2 * pocetPater - 1));
             }
         }
-        println("");
+        IO.println("");
     }
-    println(" ".repeat(pocetPater - 1) + 1 + " ".repeat(2 * pocetPater - 2) + 2 + " ".repeat(2 * pocetPater - 2) + 3);
+    IO.println(" ".repeat(pocetPater - 1) + 1 + " ".repeat(2 * pocetPater - 2) + 2 + " ".repeat(2 * pocetPater - 2) + 3);
 }
 
 void main() {
@@ -50,15 +50,15 @@ void main() {
         var zdrojovaVez = veze.get(prectiCislo("Vzít kámen z veze: ", 3) - 1);
         var cilovaVez = veze.get(prectiCislo("a přesunout ho na věž: ", 3) - 1);
         if (zdrojovaVez.isEmpty()) {
-            println("Není co přesouvat!");
+            IO.println("Není co přesouvat!");
         } else if (!cilovaVez.isEmpty() && cilovaVez.getLast() < zdrojovaVez.getLast()) {
-            println("Nelze dát větší kámen na menší!");
+            IO.println("Nelze dát větší kámen na menší!");
         } else {
             var presouvanyKamen = zdrojovaVez.removeLast();
             cilovaVez.add(presouvanyKamen);
         }
     }
     vykresliVeze();
-    println("Gratuluji, úspěšně vyřešený hlavolam :)");
-    println("Konec hry.");
+    IO.println("Gratuluji, úspěšně vyřešený hlavolam :)");
+    IO.println("Konec hry.");
 }
